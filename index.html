@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aero TXT Download</title>
+    <style>
+        /* Podstawowe ustawienia */
+        html {
+            scroll-behavior: smooth; /* Płynne przewijanie strony */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* EKRAN STARTOWY (Intro) */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0b0b0b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #intro-overlay h2 {
+            font-size: 2.2rem;
+            color: #ff4757;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Przycisk pomocniczy dla urządzeń mobilnych (gdzie nie ma spacji) */
+        .mobile-skip-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none; /* Domyślnie ukryty, aktywowany w CSS dla telefonów */
+            transition: background-color 0.2s;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-skip-btn {
+                display: inline-block;
+            }
+            #intro-overlay h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Animacja pulsującego tekstu powitalnego */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* GŁÓWNA STRONA */
+        header {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 3px solid #ff4757;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #ff4757;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            color: #a4b0be;
+        }
+
+        /* Sekcja z Twoimi TXT */
+        #txt-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        #txt-section h2 {
+            font-size: 2rem;
+            border-left: 5px solid #ff4757;
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Siatka kafelków */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Karta pojedynczego pliku */
+        .pack-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .pack-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Podgląd graficzny */
+        .pack-image {
+            width: 100%;
+            height: 200px;
+            background-color: #2f3542;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #747d8c;
+            font-weight: bold;
+        }
+
+        /* Opis zawartości */
+        .pack-info {
+            padding: 20px;
+        }
+
+        .pack-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: #ffffff;
+        }
+
+        .pack-info p {
+            margin: 0 0 20px 0;
+            color: #a4b0be;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Przycisk pobierania */
+        .btn-download {
+            display: block;
+            text-align: center;
+            background-color: #ff4757;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #ff6b81;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EKRAN STARTOWY (INTRO) -->
+    <div id="intro-overlay">
+        <h2>Witaj na Aero TXT Download!<br>Kliknij spację, żeby przejść dalej</h2>
+        <!-- Przycisk dotykowy widoczny na smartfonach -->
+        <button class="mobile-skip-btn" onclick="enterSite()">Wejdź na stronę</button>
+    </div>
+
+    <!-- NAGŁÓWEK STRONY -->
+    <header>
+        <h1>Aero TXT Download</h1>
+        <p>Znajdziesz tutaj najlepsze txt gotowe do natychmiastowego pobrania!</p>
+    </header>
+
+    <!-- SEKCJA Z PACZKAMI -->
+    <main id="txt-section">
+        <h2>Dostępne paczki TXT</h2>
+        
+        <div class="container">
+
+            <!-- KARTA 1 -->
+            <div class="pack-card">
+                <div class="pack-image">Podgląd Paczki #1</div>
+                <div class="pack-info">
+                    <h3>Gat Pack v1</h3>
+                    <p>Zoptymalizowana paczka stworzona z myślą o płynnej rozgrywce. Zawiera podmienione tekstury bloków i przedmiotów.</p>
+                    <a href="https://mediafire.com" class="btn-download">Pobierz TXT</a>
+                </div>
+            </div>
+
+            <!-- KARTA 2 -->
+            <div class="pack-card">
+                <div class="pack-image">Podgląd Paczki #2</div>
+                <div class="pack-info">
+                    <h3>Fiolet Pack v2</h3>
+                    <p>Specjalna fioletowa edycja wizualna, podmieniająca wełny, rudy oraz miecze dla fanów tego koloru.</p>
+                    <a href="https://mediafire.com" class="btn-download">Pobierz TXT</a>
+                </div>
+            </div>
+
+            <!-- KARTA 3 -->
+            <div class="pack-card">
+                <div class="pack-image">Podgląd Paczki #3</div>
+                <div class="pack-info">
+                    <h3>Egzotyczny Pack v3</h3>
+                    <p>Unikalny zestaw tekstur inspirowany żywą, egzotyczną kolorystyką bloków i interfejsu gry.</p>
+                    <a href="https://mediafire.com" class="btn-download">Pobierz TXT</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SKRYPT OBSŁUGUJĄCY NACIŚNIĘCIE SPACJI -->
+    <script>
+        // Funkcja uruchamiająca przejście do właściwej strony
+        function enterSite() {
+            const overlay = document.getElementById('intro-overlay');
+            
+            // Ukrywanie ekranu powitalnego
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            
+            // Płynne przewinięcie ekranu do sekcji z Twoimi txt
+            document.getElementById('txt-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Nasłuchiwanie kliknięcia klawisza na klawiaturze
+        window.addEventListener('keydown', function(event) {
+            // Kod 32 oraz event.key ' ' odpowiadają za klawisz spacji
+            if (event.key === ' ' || event.keyCode === 32) {
+                event.preventDefault(); // Zapobiega domyślnemu przewijaniu pustej strony spacją
+                enterSite();
+            }
+        });
+    </script>
+
+</body>
+</html>
